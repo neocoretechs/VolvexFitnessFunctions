@@ -40,6 +40,7 @@ public class AllPairs1 extends FitnessFunction {
 	 */
 	public AllPairs1(World w, Class[] argTypes, Class returnType) {
 		super(w,argTypes, returnType);
+		((RelatrixWorld)w).setStepFactors(1,4);
 	}
 
 	/**

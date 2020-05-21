@@ -38,7 +38,6 @@ public class SimpleMath2 extends FitnessFunction {
 	@Override
 	public Object execute(Chromosome ind) {
 	             int hits = 0;
-	             ((RelatrixWorld)world).setStepFactors(100,1);
 	             int test = 0;
 	             boolean[][] results = new boolean[(int)((RelatrixWorld)world).MaxSteps][(int)((RelatrixWorld)world).TestsPerStep];
 	             Object[][] argVals = new Object[1][1];

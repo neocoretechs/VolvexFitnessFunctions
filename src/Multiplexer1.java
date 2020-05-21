@@ -24,25 +24,12 @@ public class Multiplexer1 extends FitnessFunction {
 		        vars[7]=Variable.create("D7", Function.booleanClass) 
 		      };
 
-	public Multiplexer1(World w) {
-		super(w);
-	}
-
 	public Multiplexer1(World w, String guid) {
 		super(w, guid);
 	}
 
 	public Multiplexer1(World w, Class[] argTypes, Class returnType) {
 		super(w, argTypes, returnType);
-		// TODO Auto-generated constructor stub
-	}
-
-	public Multiplexer1(World w, int size, Function[] functionSet, Class[] argTypes, Class returnType) {
-		super(w, size, functionSet, argTypes, returnType);
-		// TODO Auto-generated constructor stub
-	}
-
-	public Multiplexer1() {
 		// TODO Auto-generated constructor stub
 	}
 

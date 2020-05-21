@@ -1,17 +1,7 @@
-/**
- * 
- */
-
-
 import java.util.Random;
 
 import com.neocoretechs.volvex.Chromosome;
-import com.neocoretechs.volvex.Function;
 import com.neocoretechs.volvex.fitnessfunctions.FitnessFunction;
-import com.neocoretechs.volvex.functions.Variable;
-import com.neocoretechs.volvex.objects.Matrix2x2;
-import com.neocoretechs.volvex.objects.Matrix3x3;
-import com.neocoretechs.volvex.objects.MatrixNxN;
 import com.neocoretechs.volvex.objects.Strings;
 import com.neocoretechs.volvex.worlds.RelatrixWorld;
 import com.neocoretechs.volvex.worlds.World;
@@ -21,7 +11,7 @@ import com.neocoretechs.volvex.worlds.World;
  * depth and provide the means to store the guid as a simple name for semantic retrieval from deep store.<p/>
  * In the designated world, we instantiate this class and provide access to it through the computeRawFitness method. It is presumed that the
  * return type will always be a float.
- * @author groff
+ * @author Groff (C) NeoCoreTechs 5/2020
  *
  */
 public class LeadingZero1 extends FitnessFunction {
@@ -31,7 +21,8 @@ public class LeadingZero1 extends FitnessFunction {
 				 {"a", "bb", "ccc", "dddd", "eeeee" , "ffffff"}
 	 };
 	/**
-	 * @param guid
+	 * @param w the World
+	 * @param guid A guid to assign this for storage and identification
 	 */
 	public LeadingZero1(World w, String guid) {
 		super(w, guid);
@@ -117,7 +108,6 @@ public class LeadingZero1 extends FitnessFunction {
 		    	 	 int testSetNum = 2;
 		             int hits = 0;
 		             //vars[1].set(new Strings("0"));
-		             ((RelatrixWorld)world).setStepFactors(50, 6);
 		             Strings o=null;
 		             // unit test
 		             Object[][] argVals = new Object[1][1];
@@ -184,96 +174,5 @@ public class LeadingZero1 extends FitnessFunction {
 		             ((RelatrixWorld)world).showTruth(ind, rawFit, results);
 		             return rawFit;
 		     }
-		     /**
-		      * We attempt to evolve a function that removes a random
-		      * number of leading zeroes from a string.  We loop an int
-		      * and inject the random zeroes on front of the string form<br>
-		      * We then compare the string form with the value returned from
-		      * the function.  This means that not only does it need to strip
-		      * zeroes, but if the value is 0 return a string 0, dont just strip zeroes.
-		      * Sorry this didnt work, cant optimize to a moving target
-		      */
-		      /*
-		      public float computeRawFitness(Individual ind) {
-		              hits = 0;
-		              setStepFactors(50, 1);
-		              // unit test
-		              if( ind.getSequence() == 0 ) {
-		                      zernum = new Random().nextInt(5);
-		                      zers = "000000".substring(zernum);
-		                      System.out.println("Zeroes "+zers);
-		              }
-		              for(int i = 0; i < MaxSteps; i++) {
-		                      vars[0].set(new Strings(zers+String.valueOf(i)));
-		                      Strings n = (Strings)ind.execute_object(0, World.noargs);
-		                      if( n.data.equals(String.valueOf(i)) )
-		                                ++hits;
-		              }
-		              //System.out.println("Hits: "+hits);
-		              return (MinFitnessValue - (float)(hits));
-		      }
-		      */
-		      /**
-		      * No way, this target really moves
-		      /*
-		      public float computeRawFitness(Individual ind) {
-		              hits = 0;
-		              setStepFactors(50, 1);
-		              // unit test
-		              for(int i = 0; i < MaxSteps; i++) {
-		                      zernum = new Random().nextInt(5);
-		                      zers = "000000".substring(zernum);
-		                      vars[0].set(new Strings(zers+String.valueOf(i)));
-		                      Strings n = (Strings)ind.execute_object(0, World.noargs);
-		                      if( n.data.equals(String.valueOf(i)) )
-		                                ++hits;
-		              }
-		              //System.out.println("Hits: "+hits);
-		              return (MinRawFitness - (float)(hits));
-		      }
-		      */
-		     /**
-		      * String test
-		      * If the evolved code comes back and solves it,
-		      * the fitness is upped
-		      */
-		      /*
-		      public float computeRawFitness(Individual ind) {
-		              hits = 0;
-		              setStepFactors(2500, 1);
-		              // unit test
-		              for(int i = 0; i < 50; i++) {
-		                      vars[0].set(new Strings("A:"+String.valueOf(i)));
-		                      for(int k = 0 ; k < 50; k++) {
-		                              vars[1].set(new Strings("B:"+String.valueOf(k)));
-		                              Strings j = (Strings)(ind.execute_object(0, World.noargs));
-		                              // up the hits if solved for this test case
-		                              Strings res = new Strings("A:"+String.valueOf(i)+"B:"+String.valueOf(k));
-		                              if( j.data.equals(res.data) )  ++hits;
-		                      }
-		              }
-		              //System.out.println("Hits: "+hits);
-		              return (MinRawFitness - (float)(hits));
-		      }
-		      */
-		      /**
-		      * Substring test
-		      * If the evolved code comes back and solves it,
-		      * the fitness is upped
-		      */
-		     /*
-		      public float computeRawFitness(Individual ind) {
-		              hits = 0;
-		              setStepFactors(50, 1);
-		              // unit test
-		              for(int i = 0; i < 50; i++) {
-		                      vars[0].set(new Strings("0000"+String.valueOf(i)));
-		                      Strings j = (Strings)(ind.execute_object(0, World.noargs));
-		                      if( j.data.equals(String.valueOf(i)) )
-		                                ++hits;
-		              }
-		              //System.out.println("Hits: "+hits);
-		              return (MinRawFitness - (float)(hits));
-		      }
-		      */
+
 }
