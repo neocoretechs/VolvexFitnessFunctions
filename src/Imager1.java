@@ -77,14 +77,14 @@ public class Imager1 extends FitnessFunction {
 	        ((RelatrixWorld)world).setStepFactors(1,2);
 	        int test = 0;
 	        boolean[][] results = new boolean[(int) ((RelatrixWorld)world).MaxSteps][(int) ((RelatrixWorld)world).TestsPerStep];
-	        Object[][] argVals = new Object[1][3];
+	        Object[] argVals = new Object[3];
 	        // unit test
 	        // each time this individual passes, up the hits
 	        for(int s = 0; s < ((RelatrixWorld)world).MaxSteps; s++) {
 	            int step = 0;
-	    		argVals[0][0] = image1;
-	    		argVals[0][1] = Variable.get("M0");
-	    		argVals[0][2] = new Strings();
+	    		argVals[0] = image1;
+	    		argVals[1] = Variable.get("M0");
+	    		argVals[2] = new Strings();
 	      		//argVals[1][0] = image1;
 	    		//argVals[1][1] = Variable.get("M1");
 	    		//argVals[1][2] = new Strings();
@@ -94,7 +94,7 @@ public class Imager1 extends FitnessFunction {
 	      		//argVals[3][0] = image1;
 	    		//argVals[3][1] = Variable.get("M3");
 	    		//argVals[3][2] = new Strings();
-	    		result = (MatrixNxN)ind.execute_object(argVals[0]);
+	    		result = (MatrixNxN)ind.execute_object(argVals);
 	    		for (int i=0; i<5; i++)
 	    			for (int j=0; j<5; j++)
 	    				if(result.data.length == 5 )
@@ -104,9 +104,9 @@ public class Imager1 extends FitnessFunction {
 	    					sum += 200*Math.abs(5-result.data[i][j]);
 	    				}
 	    		++step;
-	       		argVals[0][0] = image2;
-	    		argVals[0][1] = Variable.get("M0");
-	    		argVals[0][2] = new Strings();
+	       		argVals[0] = image2;
+	    		argVals[1] = Variable.get("M0");
+	    		argVals[2] = new Strings();
 	      		//argVals[1][0] = image2;
 	    		//argVals[1][1] = Variable.get("M1");
 	    		//argVals[1][2] = new Strings();
@@ -116,7 +116,7 @@ public class Imager1 extends FitnessFunction {
 	      		//argVals[3][0] = image2;
 	    		//argVals[3][1] = Variable.get("M3");
 	    		//argVals[3][2] = new Strings();
-	    		result = (MatrixNxN)ind.execute_object(argVals[0]);
+	    		result = (MatrixNxN)ind.execute_object(argVals);
 	    		for (int i=0; i<5; i++)
 	    			for (int j=0; j<5; j++)
 	    				if( result.data.length == 5)

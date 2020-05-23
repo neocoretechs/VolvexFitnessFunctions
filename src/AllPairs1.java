@@ -190,16 +190,16 @@ public class AllPairs1 extends FitnessFunction {
 		             float rawFit = -1;
 		             //Strings var1 = null,var2 = null,var3 = null,var4 = null;
 
-		             Object[][] arg = new Object[1][1];
+		             Object[] arg = new Object[1];
 		             boolean[][] results = new boolean[(int)((RelatrixWorld)world).MaxSteps][(int) ((RelatrixWorld)world).TestsPerStep];
 		            
 				     for(int test = 0; test < ((RelatrixWorld)world).MaxSteps; test++) {
 				    	for(int step = 0; step < ((RelatrixWorld)world).TestsPerStep; step++) {
 				    	//Matrix3x3 m = new Matrix3x3(nseeds[step]); 
-				    	arg[0][0] = new Strings(seeds[test][step]);
+				    	arg[0] = new Strings(seeds[test][step]);
 				    	//Strings pad1 = new Strings(String.format("%1$25s", seeds[test][step])); // pad to 25 to get our 5x5 array
 				    	//vars[0].set(StringToMatrix.toMatrix(pad1));
-				    	Strings res =  (Strings) execute(ind, arg[0]);
+				    	Strings res =  (Strings) execute(ind, arg);
 				    	//hits = pairsok(ind.getChromosome(0), res, 0, targs[i][step], test, step, hits);   
 		                //with 9 tests
 				        //int lres = res.data.length();

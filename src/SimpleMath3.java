@@ -14,7 +14,6 @@ import com.neocoretechs.volvex.worlds.World;
 public class SimpleMath3 extends FitnessFunction {
 	private static final long serialVersionUID = -328949489979118002L;
 	int l, k;
-    Object[][] argVals = new Object[1][2];
 	/**
 	 * @param guid
 	 */
@@ -37,17 +36,18 @@ public class SimpleMath3 extends FitnessFunction {
      */
 	@Override
 	public Object execute(Chromosome ind) {
+	    Object[] argVals = new Object[1];
 	         int hits = 0;
 	         int test = 0;
 	         boolean[][] results = new boolean[(int) ((RelatrixWorld)world).MaxSteps][(int) ((RelatrixWorld)world).TestsPerStep];
 	         // unit test
 	         // each time this individual passes, up the hits
-	         for(int i = 0; i < ((RelatrixWorld)world).MaxSteps; i++) {
+	         for(int i = 2; i < 4; i++) {
 	             int step = 0;
 	                 //vars[0].set(new Integer(i));
-	             	 argVals[0][0] = new Integer(i);
-	             	 argVals[0][1] = argVals[0][0];
-	                 int j = ind.execute_int(argVals[0]);
+	             	 argVals[0] = new Integer(i);
+	             	 //argVals[1] = new Integer(i);
+	                 int j = ind.execute_int(argVals);
 	                 //System.out.println(i+" "+j);
 	                 if( j == ( (i*i)+2 ) ){
 	                	 ++hits;

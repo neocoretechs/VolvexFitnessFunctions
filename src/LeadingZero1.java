@@ -110,55 +110,55 @@ public class LeadingZero1 extends FitnessFunction {
 		             //vars[1].set(new Strings("0"));
 		             Strings o=null;
 		             // unit test
-		             Object[][] argVals = new Object[1][1];
+		             Object[] argVals = new Object[1][1];
 		             int test = 0;
 		             boolean[][] results = new boolean[(int) ((RelatrixWorld)world).MaxSteps][(int) ((RelatrixWorld)world).TestsPerStep];
 		             // if we strip zeroes, we dont want the index to start at 0, because that increases our zeroes by 1 when added to a string with valueOf(i)
 		             for(int i = 1; i <= ((RelatrixWorld)world).MaxSteps; i++) {
 		                 int step = 0;
 		                 //vars[0].set(new Strings(zers+String.valueOf(i)));
-		                 argVals[0][0] = new Strings(testSet[testSetNum][step]+String.valueOf(i));
-		                 o = (Strings)ind.execute_object(argVals[0]);
+		                 argVals[0] = new Strings(testSet[testSetNum][step]+String.valueOf(i));
+		                 o = (Strings)ind.execute_object(argVals);
 		                 if( o.data.equals(String.valueOf(i)) ) {
 		                	 ++hits;
 		                	 results[test][step] = true;
 		                 } else
 		                	 results[test][step] = false;
 		                 ++step;
-		                 argVals[0][0] = new Strings(testSet[testSetNum][step]+String.valueOf(i));
-		                 o = (Strings)ind.execute_object(argVals[0]);
+		                 argVals[0] = new Strings(testSet[testSetNum][step]+String.valueOf(i));
+		                 o = (Strings)ind.execute_object(argVals);
 		                 if( o.data.equals(String.valueOf(i)) ) {
 		                	 ++hits;
 		                 	 results[test][step] = true;
 		                 } else
 		                	 results[test][step] = false;
 		                 ++step;
-		                 argVals[0][0] = new Strings(testSet[testSetNum][step]+String.valueOf(i));
-		                 o = (Strings)ind.execute_object(argVals[0]);
+		                 argVals[0] = new Strings(testSet[testSetNum][step]+String.valueOf(i));
+		                 o = (Strings)ind.execute_object(argVals);
 		                 if( o.data.equals(String.valueOf(i)) ) {
 		                	 ++hits;
 		                 	 results[test][step] = true;
 		                 } else
 		                	 results[test][step] = false;
 		                 ++step;
-		                 argVals[0][0] = new Strings(testSet[testSetNum][step]+String.valueOf(i));
-		                 o = (Strings)ind.execute_object(argVals[0]);
+		                 argVals[0] = new Strings(testSet[testSetNum][step]+String.valueOf(i));
+		                 o = (Strings)ind.execute_object(argVals);
 		                 if( o.data.equals(String.valueOf(i)) ) {
 		                	 ++hits;
 		                 	 results[test][step] = true;
 		                 } else
 		                	 results[test][step] = false;
 		                 ++step;
-		                 argVals[0][0] = new Strings(testSet[testSetNum][step]+String.valueOf(i));
-		                 o = (Strings)ind.execute_object(argVals[0]);
+		                 argVals[0] = new Strings(testSet[testSetNum][step]+String.valueOf(i));
+		                 o = (Strings)ind.execute_object(argVals);
 		                 if( o.data.equals(String.valueOf(i)) ) {
 		                	 ++hits;
 		                 	 results[test][step] = true;
 		                 } else
 		                	 results[test][step] = false;
 		                 ++step;
-		                 argVals[0][0] = new Strings(testSet[testSetNum][step]+String.valueOf(i));
-		                 o = (Strings)ind.execute_object(argVals[0]);
+		                 argVals[0] = new Strings(testSet[testSetNum][step]+String.valueOf(i));
+		                 o = (Strings)ind.execute_object(argVals);
 		                 if( o.data.equals(String.valueOf(i)) ) {
 		                	 ++hits;
 		                 	 results[test][step] = true;

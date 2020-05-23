@@ -18,14 +18,14 @@ import com.neocoretechs.volvex.worlds.World;
 public class SimpleMath1 extends FitnessFunction {
 	private static final long serialVersionUID = -328949489979118002L;
 	static int l, k;
-	static Object[][] argVals = new Object[1][2];
+	static Object[] argVals = new Object[2];
 	static {
 		Random r = new Random();
 		k = r.nextInt();
 		l = r.nextInt();
 		System.out.println("l="+l+" k="+k);
-		argVals[0][0] = new Integer(l);
-		argVals[0][1] = new Integer(k);
+		argVals[0] = new Integer(l);
+		argVals[1] = new Integer(k);
 	}
 	/**
 	 * @param guid
@@ -60,7 +60,7 @@ public class SimpleMath1 extends FitnessFunction {
 		      // each time this individual passes, up the hits
 		      for(int i = 0; i < ((RelatrixWorld)world).MaxSteps; i++) {
 		             int step = 0;
-		             int j = ind.execute_int(argVals[0]);
+		             int j = ind.execute_int(argVals);
 		             //System.out.println("j="+j+" k="+k+" l="+l);
 		             // up the hits if solved for this test case
 		             if( l <= k )
