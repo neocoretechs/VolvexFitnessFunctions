@@ -6,46 +6,36 @@ import com.neocoretechs.volvex.worlds.RelatrixWorld;
 import com.neocoretechs.volvex.worlds.World;
 
 /**
- * Expression of fitness function as chromosome function. When using the chromosome function in this way we nullify the functions and
- * depth and provide the means to store the guid as a simple name for semantic retrieval from deep store.<p/>
- * In the designated world, we instantiate this class and provide access to it through the computeRawFitness method. It is presumed that the
- * return type will always be a float.
+ * Test of the fitness functions used to evolve the chromosomes in the simple math series. A test is a type of function that
+ * resembles a fitness function in function and form, however, it is used in the test scenario rath than evolution. It is designed to deliver a
+ * range of values for evaluation visually.
  * @author groff
  *
  */
-public class SimpleMath3 extends FitnessFunction {
+public class SimpleMathTest2 extends FitnessFunction {
 	private static final long serialVersionUID = -328949489979118002L;
-	Random r = new Random();
-	int[] rnum = new int[100];
-	int[] snum = new int[100];
-	int l, k;
+	Random r;
+	int k,l;
 	/**
 	 * @param guid
 	 */
-	public SimpleMath3(World w, String guid) {
+	public SimpleMathTest2(World w, String guid) {
 		super(w, guid);
-		compRan();
+		r = new Random();
 	}
 	/**
 	 * @param argTypes
 	 * @param returnType
 	 */
-	public SimpleMath3(World w, Class[] argTypes, Class returnType) {
+	public SimpleMathTest2(World w, Class[] argTypes, Class returnType) {
 		super(w,argTypes, returnType);
-		compRan();
+		r = new Random();
 	}
 
-	public SimpleMath3() {
-		compRan();
+	public SimpleMathTest2() {
+		r = new Random();
 	}
 	
-	private void compRan() {
-		for(int i = 0; i < rnum.length; i++) {
-			rnum[i] = r.nextInt();
-			snum[i] = r.nextInt();
-		}
-	}
-		
 	// put test specific stuff here
     /**
      * X**2 + 2
@@ -58,14 +48,15 @@ public class SimpleMath3 extends FitnessFunction {
 	         boolean[][] results = new boolean[(int) ((RelatrixWorld)world).MaxSteps][(int) ((RelatrixWorld)world).TestsPerStep];
 	         // unit test
 	         // each time this individual passes, up the hits
-	         for(int i = 0; i <((RelatrixWorld)world).MaxSteps; i++) {
+	         for(int i = 0; i < 100; i++) {
 	             int step = 0;
-	                 //vars[0].set(new Integer(i));
-	             	 argVals[0] = new Integer(rnum[i]);
-	             	 argVals[1] = new Integer(snum[i]);
+	             	//k = r.nextInt();
+	             	 argVals[0] = new Integer(i);
+	             	 argVals[1] = new Integer(i);
+	             	 System.out.println("Preparing to execute with "+k+" test "+test+" step "+step+" with tests="+((RelatrixWorld)world).MaxSteps+" steps="+((RelatrixWorld)world).TestsPerStep);
 	                 int j = ind.execute_int(argVals);
 	                 //System.out.println(i+" "+j);
-	                 if( j == ( (rnum[i]*snum[i])+2 ) ){
+	                 if( j == ( (i*i)+2 ) ){ // did we evolve i**2 + 2 or arg1 * arg2 + 2?
 	                	 ++hits;
 	                   	 results[test][step] = true;
 	                 } else
